@@ -54,13 +54,28 @@ Log.w("warning");
 Log.e("error");
 ```
 
-Output
+#### Output
+
+```java
+Log.initialize(true, false);
 ```
-2017-11-23 18:15:45.858 V [Main] [main,5,main] net.mm2d.log.sample.Main.main(Main.java:57) : verbose
-2017-11-23 18:15:45.858 D [Main] [main,5,main] net.mm2d.log.sample.Main.main(Main.java:58) : debug
-2017-11-23 18:15:45.858 I [Main] [main,5,main] net.mm2d.log.sample.Main.main(Main.java:59) : info
-2017-11-23 18:15:45.858 W [Main] [main,5,main] net.mm2d.log.sample.Main.main(Main.java:60) : warning
-2017-11-23 18:15:45.859 E [Main] [main,5,main] net.mm2d.log.sample.Main.main(Main.java:61) : error
+```
+2018-02-24 05:02:05.510 V [MainWindow] verbose
+2018-02-24 05:02:05.510 D [MainWindow] debug
+2018-02-24 05:02:05.510 I [MainWindow] info
+2018-02-24 05:02:05.510 W [MainWindow] warning
+2018-02-24 05:02:05.510 E [MainWindow] error
+```
+
+```java
+Log.initialize(true, true);
+```
+```
+2018-02-24 05:02:46.541 V [MainWindow] [main,5,main] net.mm2d.upnp.sample.MainWindow.main(MainWindow.java:57) : verbose
+2018-02-24 05:02:46.542 D [MainWindow] [main,5,main] net.mm2d.upnp.sample.MainWindow.main(MainWindow.java:58) : debug
+2018-02-24 05:02:46.542 I [MainWindow] [main,5,main] net.mm2d.upnp.sample.MainWindow.main(MainWindow.java:59) : info
+2018-02-24 05:02:46.542 W [MainWindow] [main,5,main] net.mm2d.upnp.sample.MainWindow.main(MainWindow.java:60) : warning
+2018-02-24 05:02:46.542 E [MainWindow] [main,5,main] net.mm2d.upnp.sample.MainWindow.main(MainWindow.java:61) : error
 ```
 
 ## How to use

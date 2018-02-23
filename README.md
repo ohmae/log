@@ -44,6 +44,20 @@ Log.setInitializer(AndroidLogInitialiser.get());
 Log.initialize(DEBUG, VERBOSE);
 ```
 
+#### configuration
+
+```java
+Log.appendCaller(false);
+Log.appendThread(false);
+Log.setLogLevel(Log.VERBOSE);
+Log.setPrint(new Log.Print(){
+    @Override
+    public void println(final int level, @Nonnull final String tag, @Nonnull final String message) {
+        ...
+    }
+});
+```
+
 ### logging
 
 ```java

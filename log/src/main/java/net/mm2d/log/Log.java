@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 大前良介(OHMAE Ryosuke)
+ * Copyright (c) 2016 大前良介 (OHMAE Ryosuke)
  *
  * This software is released under the MIT License.
  * http://opensource.org/licenses/MIT
@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  * <p>{@link #appendThread(boolean)}でtrueを指定することにより、
  * 呼び出し元のスレッド情報をログ出力に追加することができる。
  *
- * @author <a href="mailto:ryo@mm2d.net">大前良介(OHMAE Ryosuke)</a>
+ * @author <a href="mailto:ryo@mm2d.net">大前良介 (OHMAE Ryosuke)</a>
  */
 public class Log {
     /**

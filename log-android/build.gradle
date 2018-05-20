@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
 
 def versionMajor = 0
 def versionMinor = 0
@@ -30,6 +32,56 @@ dependencies {
     implementation project(':log')
     implementation 'com.android.support:support-annotations:27.1.1@jar'
     testImplementation 'junit:junit:4.12'
+}
+
+def libraryId = 'log-android'
+def siteUrl = 'https://github.com/ohmae/Log'
+def githubUrl = 'https://github.com/ohmae/Log'
+
+bintray {
+    user = project.hasProperty('bintray_user') ? bintray_user : ''
+    key = project.hasProperty('bintray_key') ? bintray_key : ''
+    configurations = ['archives']
+
+    pkg {
+        repo = 'maven'
+        name = project.group + '.' + libraryId
+        licenses = ['MIT']
+        websiteUrl = siteUrl
+        issueTrackerUrl = githubUrl + '/blob/master/LICENSE'
+        vcsUrl = githubUrl + '.git'
+        issueTrackerUrl = githubUrl + '/issues'
+        publicDownloadNumbers = true
+        version {
+            name = project.version
+        }
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name libraryId
+            url siteUrl
+
+            packaging 'aar'
+            groupId project.group
+            artifactId libraryId
+            version project.version
+
+            licenses {
+                license {
+                    name 'The MIT License'
+                    url 'https://opensource.org/licenses/MIT'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection githubUrl + '.git'
+                url githubUrl
+            }
+        }
+    }
 }
 
 uploadArchives {

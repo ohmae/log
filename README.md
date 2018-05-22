@@ -3,6 +3,8 @@
 [![GitHub release](https://img.shields.io/github/release/ohmae/Log.svg)](https://github.com/ohmae/Log/releases)
 [![GitHub issues](https://img.shields.io/github/issues/ohmae/Log.svg)](https://github.com/ohmae/Log/issues)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/ohmae/Log.svg)](https://github.com/ohmae/Log/issues?q=is%3Aissue+is%3Aclosed)
+[![Maven Repository](https://img.shields.io/badge/maven-jcenter-brightgreen.svg)](https://bintray.com/ohmae/maven/net.mm2d.log)
+[![Maven metadata URI](https://img.shields.io/maven-metadata/v/https/jcenter.bintray.com/net/mm2d/log/maven-metadata.xml.svg)](https://bintray.com/ohmae/maven/net.mm2d.log)
 
 This is a simple log print utils, like [android.util.Log](https://developer.android.com/reference/android/util/Log.html).
 
@@ -94,21 +96,18 @@ Log.initialize(true, true);
 
 ## How to use
 
-Please add my maven repository, as following.
+You can download this library from jCenter.
 ```gradle
 repositories {
-    maven {
-       ...
-        url 'https://ohmae.github.com/maven'
-    }
+    jcenter()
 }
 ```
 
-Please add dependencies, as following.
+Add dependencies, as following.
 ```gradle
 dependencies {
     ...
-    compile 'net.mm2d:log:0.0.1'
+    compile 'net.mm2d:log:0.0.2'
     ...
 }
 ```
@@ -117,8 +116,8 @@ If you want to use Android utils, as following.
 ```gradle
 dependencies {
     ...
-    compile 'net.mm2d:log:0.0.1'
-    compile 'net.mm2d:log-android:0.0.1'
+    compile 'net.mm2d:log:0.0.2'
+    compile 'net.mm2d:log-android:0.0.2'
     ...
 }
 ```

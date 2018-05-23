@@ -40,10 +40,9 @@ Log.initialize(DEBUG, VERBOSE);
 If you write it like this, you can output log to Logcat. (default is System.out)
 ```java
 private static final boolean DEBUG = true;
-private static final boolean VERBOSE = true;
 ...
-Log.setInitializer(AndroidLogInitialiser.get());
-Log.initialize(DEBUG, VERBOSE);
+Log.setInitializer(AndroidLogInitialiser.getDefault());
+Log.initialize(DEBUG);
 ```
 
 #### configuration

@@ -243,6 +243,21 @@ public class Log {
      * <p>デフォルトでは、デバッグモードを指定する場合、
      * すべての出力を{@link System#out}へ出力する設定を行い。
      * そうでなければすべての出力を抑制する設定となる。
+     *
+     * @param debug   デバッグモードにする場合trueを指定する。
+     */
+    public static void initialize(final boolean debug) {
+        initialize(debug, false);
+    }
+
+    /**
+     * 初期設定を行う。
+     *
+     * <p>処理内容は{@link #setInitializer(Initializer)}を使用し変更することができる。
+     *
+     * <p>デフォルトでは、デバッグモードを指定する場合、
+     * すべての出力を{@link System#out}へ出力する設定を行い。
+     * そうでなければすべての出力を抑制する設定となる。
      * デバッグモードで、詳細出力を有効とすると、
      * 呼び出し元のコード位置とスレッド情報を合わせて出力するようになる。
      *

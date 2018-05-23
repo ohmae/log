@@ -1,10 +1,14 @@
-group 'net.mm2d'
-version '0.0.2'
-
 apply plugin: 'java-library'
 apply plugin: 'maven'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'jacoco'
+
+def versionMajor = 0
+def versionMinor = 0
+def versionPatch = 2
+
+group 'net.mm2d'
+version "${versionMajor}.${versionMinor}.${versionPatch}"
 
 sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
@@ -17,7 +21,7 @@ dependencies {
     compile 'com.google.code.findbugs:jsr305:3.0.2'
     testCompile 'junit:junit:4.12'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
-    testCompile 'org.mockito:mockito-core:2.15.0'
+    testCompile 'org.mockito:mockito-core:2.18.3'
 }
 
 def libraryId = 'log'

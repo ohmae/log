@@ -48,7 +48,7 @@ public class SingleThreadLogPrint {
 
     private static class SingleThreadPrintImpl implements Print {
         @NonNull
-        private static SingleThreadPrintImpl INSTANCE = new SingleThreadPrintImpl();
+        private static final SingleThreadPrintImpl INSTANCE = new SingleThreadPrintImpl();
 
         @NonNull
         static SingleThreadPrintImpl getInstance() {
@@ -69,12 +69,7 @@ public class SingleThreadLogPrint {
                 final int level,
                 @NonNull final String tag,
                 @NonNull final String message) {
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    printlnInner(level, tag, message);
-                }
-            });
+            mHandler.post(() -> printlnInner(level, tag, message));
         }
 
         private void printlnInner(

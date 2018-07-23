@@ -51,7 +51,7 @@ public class MainThreadLogPrint {
 
     private static class MainThreadLogPrintImpl implements Print {
         @NonNull
-        private static MainThreadLogPrintImpl INSTANCE = new MainThreadLogPrintImpl();
+        private static final MainThreadLogPrintImpl INSTANCE = new MainThreadLogPrintImpl();
 
         @NonNull
         static MainThreadLogPrintImpl getInstance() {
@@ -72,12 +72,7 @@ public class MainThreadLogPrint {
                 printlnInner(level, tag, message);
                 return;
             }
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    printlnInner(level, tag, message);
-                }
-            });
+            mHandler.post(() -> printlnInner(level, tag, message));
         }
 
         private void printlnInner(

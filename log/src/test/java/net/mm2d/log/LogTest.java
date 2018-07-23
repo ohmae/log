@@ -27,6 +27,7 @@ import static org.mockito.ArgumentMatchers.contains;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
+@SuppressWarnings("NonAsciiCharacters")
 @RunWith(JUnit4.class)
 public class LogTest {
     @Before
@@ -349,7 +350,10 @@ public class LogTest {
     public void print() {
         final Print print = new Print() {
             @Override
-            public void println(final int level, @Nullable final String tag, @Nullable final String message) {
+            public void println(
+                    final int level,
+                    @Nullable final String tag,
+                    @Nullable final String message) {
             }
         };
         Log.setPrint(print);

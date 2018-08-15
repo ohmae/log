@@ -17,8 +17,6 @@ import org.junit.runners.JUnit4;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import javax.annotation.Nullable;
-
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -348,13 +346,7 @@ public class LogTest {
 
     @Test
     public void print() {
-        final Print print = new Print() {
-            @Override
-            public void println(
-                    final int level,
-                    @Nullable final String tag,
-                    @Nullable final String message) {
-            }
+        final Print print = (level, tag, message) -> {
         };
         Log.setPrint(print);
         Log.v(null, "");

@@ -39,10 +39,8 @@ Log.initialize(DEBUG, VERBOSE);
 
 If you write it like this, you can output log to Logcat. (default is System.out)
 ```java
-private static final boolean DEBUG = true;
-...
 Log.setInitializer(AndroidLogInitialiser.getDefault());
-Log.initialize(DEBUG);
+Log.initialize(BuildConfig.DEBUG);
 ```
 
 #### configuration
@@ -58,6 +56,20 @@ Log.setPrint(new Log.Print(){
     }
 });
 ```
+
+#### Log Level
+
+If you set the log level, logs that are equal to or higher than the set value are output.
+
+ASSERT > ERROR > WARN > INFO > DEBUG > VERBOSE
+
+eg. If you set Log.ERROR
+
+```java
+Log.setLogLevel(Log.ERROR);
+```
+
+Only ASSERT or ERROR level logs are output.
 
 ### logging
 
@@ -106,7 +118,7 @@ Add dependencies, as following.
 ```gradle
 dependencies {
     ...
-    compile 'net.mm2d:log:0.0.3'
+    implementation 'net.mm2d:log:0.0.3'
     ...
 }
 ```
@@ -115,8 +127,8 @@ If you want to use Android utils, as following.
 ```gradle
 dependencies {
     ...
-    compile 'net.mm2d:log:0.0.3'
-    compile 'net.mm2d:log-android:0.0.3'
+    implementation 'net.mm2d:log:0.0.3'
+    implementation 'net.mm2d:log-android:0.0.3'
     ...
 }
 ```

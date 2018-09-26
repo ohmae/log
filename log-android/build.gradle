@@ -11,10 +11,12 @@ group 'net.mm2d'
 version "${versionMajor}.${versionMinor}.${versionPatch}"
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
 
@@ -34,7 +36,7 @@ android {
 
 dependencies {
     implementation project(':log')
-    implementation 'com.android.support:support-annotations:27.1.1@jar'
+    implementation 'androidx.annotation:annotation:1.0.0'
     testImplementation 'junit:junit:4.12'
 }
 

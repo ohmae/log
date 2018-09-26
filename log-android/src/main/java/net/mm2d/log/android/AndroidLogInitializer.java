@@ -7,11 +7,11 @@
 
 package net.mm2d.log.android;
 
-import android.support.annotation.NonNull;
-
 import net.mm2d.log.Log;
 import net.mm2d.log.Log.Initializer;
 import net.mm2d.log.Log.Print;
+
+import androidx.annotation.NonNull;
 
 /**
  * Androidで{@link Log}を使うためのInitializerを提供する。

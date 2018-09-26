@@ -9,11 +9,12 @@ package net.mm2d.log.android;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.support.annotation.NonNull;
 
 import net.mm2d.log.Log;
 import net.mm2d.log.Log.Initializer;
 import net.mm2d.log.Log.Print;
+
+import androidx.annotation.NonNull;
 
 /**
  * {@link Log}をAndroid上で使用するための出力クラスを提供する。

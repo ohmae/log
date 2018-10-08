@@ -6,8 +6,13 @@ apply plugin: 'com.github.dcendents.android-maven'
 def versionMajor = 0
 def versionMinor = 1
 def versionPatch = 0
+def packageName = 'net.mm2d'
+def libraryId = 'log-android'
+def siteUrl = 'https://github.com/ohmae/Log'
+def githubUrl = 'https://github.com/ohmae/Log'
 
-group 'net.mm2d'
+group packageName
+archivesBaseName = libraryId
 version "${versionMajor}.${versionMinor}.${versionPatch}"
 
 android {
@@ -39,10 +44,6 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.0.0'
     testImplementation 'junit:junit:4.12'
 }
-
-def libraryId = 'log-android'
-def siteUrl = 'https://github.com/ohmae/Log'
-def githubUrl = 'https://github.com/ohmae/Log'
 
 bintray {
     user = project.hasProperty('bintray_user') ? bintray_user : ''

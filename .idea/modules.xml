@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Log.iml" filepath="$PROJECT_DIR$/Log.iml" />
-      <module fileurl="file://$PROJECT_DIR$/log/log.iml" filepath="$PROJECT_DIR$/log/log.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidStudioProjects-log.iml" filepath="$PROJECT_DIR$/AndroidStudioProjects-log.iml" />
       <module fileurl="file://$PROJECT_DIR$/log-android/log-android.iml" filepath="$PROJECT_DIR$/log-android/log-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/log/log-log.iml" filepath="$PROJECT_DIR$/log/log-log.iml" />
     </modules>
   </component>
 </project>

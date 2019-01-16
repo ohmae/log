@@ -28,32 +28,45 @@ The "log-android" module is a utility for using the "log" module on Android.
 
 ### Initialize
 
+This library needs to set Log Level. Default is never output log.
+And needs to specify a Sender. Default does nothing.
+
+If you use the default implementation, write as follows.
+
 ```java
 private static final boolean DEBUG = true;
 private static final boolean VERBOSE = true;
 ...
-Log.initialize(DEBUG, VERBOSE);
+if (DEBUG) {
+    Logger.setLogLevel(Logger.VERBOSE);
+    Logger.setSender(Senders.create());
+    Senders.appendCaller(VERBOSE);
+    Senders.appendThread(VERBOSE);
+}
 ```
 
 #### for Android
 
 If you write it like this, you can output log to Logcat. (default is System.out)
 ```java
-Log.setInitializer(AndroidLogInitialiser.getDefault());
-Log.initialize(BuildConfig.DEBUG);
+private static final boolean VERBOSE = true;
+...
+if (BuildConfig.DEBUG) {
+    Logger.setLogLevel(Logger.VERBOSE);
+    Logger.setSender(AndroidSenders.create());
+    AndroidSenders.appendCaller(VERBOSE);
+    AndroidSenders.appendThread(VERBOSE);
+}
 ```
 
-#### configuration
+#### Custom sender
+
+Of course you can implement Sender any way.
+e.g. write to a file or send it to the network, etc.
 
 ```java
-Log.appendCaller(false);
-Log.appendThread(false);
-Log.setLogLevel(Log.VERBOSE);
-Log.setPrint(new Log.Print(){
-    @Override
-    public void println(final int level, @Nonnull final String tag, @Nonnull final String message) {
-        ...
-    }
+Logger.setSender((level, message, throwable) -> {
+    ...
 });
 ```
 
@@ -66,7 +79,7 @@ ASSERT > ERROR > WARN > INFO > DEBUG > VERBOSE
 eg. If you set Log.ERROR
 
 ```java
-Log.setLogLevel(Log.ERROR);
+Logger.setLogLevel(Log.ERROR);
 ```
 
 Only ASSERT or ERROR level logs are output.
@@ -74,17 +87,18 @@ Only ASSERT or ERROR level logs are output.
 ### logging
 
 ```java
-Log.v("verbose");
-Log.d("debug");
-Log.i("info");
-Log.w("warning");
-Log.e("error");
+Logger.v("verbose");
+Logger.d("debug");
+Logger.i("info");
+Logger.w("warning");
+Logger.e("error");
 ```
 
 #### Output
 
 ```java
-Log.initialize(true, false);
+Logger.setLogLevel(Logger.VERBOSE);
+Logger.setSender(Senders.create());
 ```
 ```
 2018-02-24 05:02:05.510 V [MainWindow] verbose
@@ -95,7 +109,10 @@ Log.initialize(true, false);
 ```
 
 ```java
-Log.initialize(true, true);
+Logger.setLogLevel(Logger.VERBOSE);
+Logger.setSender(Senders.create());
+Senders.appendCaller(VERBOSE);
+Senders.appendThread(VERBOSE);
 ```
 ```
 2018-02-24 05:02:46.541 V [MainWindow] [main,5,main] net.mm2d.upnp.sample.MainWindow.main(MainWindow.java:57) : verbose
@@ -117,19 +134,15 @@ repositories {
 Add dependencies, as following.
 ```gradle
 dependencies {
-    ...
-    implementation 'net.mm2d:log:0.1.0'
-    ...
+    implementation 'net.mm2d:log:0.2.0'
 }
 ```
 
 If you want to use Android utils, as following.
 ```gradle
 dependencies {
-    ...
-    implementation 'net.mm2d:log:0.1.0'
-    implementation 'net.mm2d:log-android:0.1.0'
-    ...
+    implementation 'net.mm2d:log:0.2.0'
+    implementation 'net.mm2d:log-android:0.2.0'
 }
 ```
 

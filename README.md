@@ -24,6 +24,8 @@ The "log-android" module is a utility for using the "log" module on Android.
 - log-android
   - Android API Level 14 (Android 4.0.0) or later
 
+And I strongly recommend to use with Lambda. (Kotlin, Java8, desugar, retrolambda, etc.)
+
 ## Example of use
 
 ### Initialize

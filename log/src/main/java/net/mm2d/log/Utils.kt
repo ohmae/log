@@ -13,7 +13,7 @@ import java.io.StringWriter
 /**
  * Log sender interface.
  */
-typealias Sender = (Int, String, Throwable?) -> Unit
+typealias Sender = (level: Int, message: String, throwable: Throwable?) -> Unit
 
 /**
  * Delegate the log output method.

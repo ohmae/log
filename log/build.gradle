@@ -18,10 +18,9 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
     testImplementation "io.mockk:mockk:1.9.1"
-    testImplementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 bintray {

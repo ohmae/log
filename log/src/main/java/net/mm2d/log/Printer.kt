@@ -5,14 +5,12 @@
  * http://opensource.org/licenses/MIT
  */
 
-package net.mm2d.log;
-
-import javax.annotation.Nonnull;
+package net.mm2d.log
 
 /**
  * Delegate the log output method.
  */
-public interface Printer {
+interface Printer {
     /**
      * Output log.
      *
@@ -20,8 +18,5 @@ public interface Printer {
      * @param tag     TAG
      * @param message Log message
      */
-    void print(
-            final int level,
-            @Nonnull final String tag,
-            @Nonnull final String message);
+    fun print(level: Int, tag: String, message: String)
 }

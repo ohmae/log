@@ -107,18 +107,18 @@ class LoggerTest {
         Logger.setSender(sender)
 
         val message = "message"
-        val supplier = spyk(MessageSupplier { message })
+        val supplier = spyk( { message })
 
         Logger.setLogLevel(Logger.ASSERT)
         Logger.v(supplier)
 
-        verify(exactly = 0) {supplier.get()}
+        verify(exactly = 0) {supplier()}
         verify(exactly = 0) {sender.send(Logger.VERBOSE, message, null)}
 
         Logger.setLogLevel(Logger.VERBOSE)
         Logger.v(supplier)
 
-        verify(exactly = 1) {supplier.get()}
+        verify(exactly = 1) {supplier()}
         verify(exactly = 1) {sender.send(Logger.VERBOSE, message, null)}
     }
 
@@ -163,18 +163,18 @@ class LoggerTest {
         Logger.setSender(sender)
         val message = "message"
         val throwable = Throwable()
-        val supplier = spyk(MessageSupplier { message })
+        val supplier = spyk( { message })
 
         Logger.setLogLevel(Logger.ASSERT)
         Logger.v(supplier, throwable)
 
-        verify(exactly = 0) {supplier.get()}
+        verify(exactly = 0) {supplier()}
         verify(exactly = 0) {sender.send(Logger.VERBOSE, message, throwable)}
 
         Logger.setLogLevel(Logger.VERBOSE)
         Logger.v(supplier, throwable)
 
-        verify(exactly = 1) {supplier.get()}
+        verify(exactly = 1) {supplier()}
         verify(exactly = 1) {sender.send(Logger.VERBOSE, message, throwable)}
     }
 
@@ -201,18 +201,18 @@ class LoggerTest {
         Logger.setSender(sender)
 
         val message = "message"
-        val supplier = spyk(MessageSupplier { message })
+        val supplier = spyk( { message })
 
         Logger.setLogLevel(Logger.ASSERT)
         Logger.d(supplier)
 
-        verify(exactly = 0) {supplier.get()}
+        verify(exactly = 0) {supplier()}
         verify(exactly = 0) {sender.send(Logger.DEBUG, message, null)}
 
         Logger.setLogLevel(Logger.VERBOSE)
         Logger.d(supplier)
 
-        verify(exactly = 1) {supplier.get()}
+        verify(exactly = 1) {supplier()}
         verify(exactly = 1) {sender.send(Logger.DEBUG, message, null)}
     }
 
@@ -257,18 +257,18 @@ class LoggerTest {
         Logger.setSender(sender)
         val message = "message"
         val throwable = Throwable()
-        val supplier = spyk(MessageSupplier { message })
+        val supplier = spyk( { message })
 
         Logger.setLogLevel(Logger.ASSERT)
         Logger.d(supplier, throwable)
 
-        verify(exactly = 0) {supplier.get()}
+        verify(exactly = 0) {supplier()}
         verify(exactly = 0) {sender.send(Logger.DEBUG, message, throwable)}
 
         Logger.setLogLevel(Logger.VERBOSE)
         Logger.d(supplier, throwable)
 
-        verify(exactly = 1) {supplier.get()}
+        verify(exactly = 1) {supplier()}
         verify(exactly = 1) {sender.send(Logger.DEBUG, message, throwable)}
     }
 
@@ -295,18 +295,18 @@ class LoggerTest {
         Logger.setSender(sender)
 
         val message = "message"
-        val supplier = spyk(MessageSupplier { message })
+        val supplier = spyk( { message })
 
         Logger.setLogLevel(Logger.ASSERT)
         Logger.i(supplier)
 
-        verify(exactly = 0) {supplier.get()}
+        verify(exactly = 0) {supplier()}
         verify(exactly = 0) {sender.send(Logger.INFO, message, null)}
 
         Logger.setLogLevel(Logger.VERBOSE)
         Logger.i(supplier)
 
-        verify(exactly = 1) {supplier.get()}
+        verify(exactly = 1) {supplier()}
         verify(exactly = 1) {sender.send(Logger.INFO, message, null)}
     }
 
@@ -351,18 +351,18 @@ class LoggerTest {
         Logger.setSender(sender)
         val message = "message"
         val throwable = Throwable()
-        val supplier = spyk(MessageSupplier { message })
+        val supplier = spyk( { message })
 
         Logger.setLogLevel(Logger.ASSERT)
         Logger.i(supplier, throwable)
 
-        verify(exactly = 0) {supplier.get()}
+        verify(exactly = 0) {supplier()}
         verify(exactly = 0) {sender.send(Logger.INFO, message, throwable)}
 
         Logger.setLogLevel(Logger.VERBOSE)
         Logger.i(supplier, throwable)
 
-        verify(exactly = 1) {supplier.get()}
+        verify(exactly = 1) {supplier()}
         verify(exactly = 1) {sender.send(Logger.INFO, message, throwable)}
     }
 
@@ -389,18 +389,18 @@ class LoggerTest {
         Logger.setSender(sender)
 
         val message = "message"
-        val supplier = spyk(MessageSupplier { message })
+        val supplier = spyk( { message })
 
         Logger.setLogLevel(Logger.ASSERT)
         Logger.w(supplier)
 
-        verify(exactly = 0) {supplier.get()}
+        verify(exactly = 0) {supplier()}
         verify(exactly = 0) {sender.send(Logger.WARN, message, null)}
 
         Logger.setLogLevel(Logger.VERBOSE)
         Logger.w(supplier)
 
-        verify(exactly = 1) {supplier.get()}
+        verify(exactly = 1) {supplier()}
         verify(exactly = 1) {sender.send(Logger.WARN, message, null)}
     }
 
@@ -445,18 +445,18 @@ class LoggerTest {
         Logger.setSender(sender)
         val message = "message"
         val throwable = Throwable()
-        val supplier = spyk(MessageSupplier { message })
+        val supplier = spyk( { message })
 
         Logger.setLogLevel(Logger.ASSERT)
         Logger.w(supplier, throwable)
 
-        verify(exactly = 0) {supplier.get()}
+        verify(exactly = 0) {supplier()}
         verify(exactly = 0) {sender.send(Logger.WARN, message, throwable)}
 
         Logger.setLogLevel(Logger.VERBOSE)
         Logger.w(supplier, throwable)
 
-        verify(exactly = 1) {supplier.get()}
+        verify(exactly = 1) {supplier()}
         verify(exactly = 1) {sender.send(Logger.WARN, message, throwable)}
     }
 
@@ -483,18 +483,18 @@ class LoggerTest {
         Logger.setSender(sender)
 
         val message = "message"
-        val supplier = spyk(MessageSupplier { message })
+        val supplier = spyk( { message })
 
         Logger.setLogLevel(Logger.ASSERT)
         Logger.e(supplier)
 
-        verify(exactly = 0) {supplier.get()}
+        verify(exactly = 0) {supplier()}
         verify(exactly = 0) {sender.send(Logger.ERROR, message, null)}
 
         Logger.setLogLevel(Logger.VERBOSE)
         Logger.e(supplier)
 
-        verify(exactly = 1) {supplier.get()}
+        verify(exactly = 1) {supplier()}
         verify(exactly = 1) {sender.send(Logger.ERROR, message, null)}
     }
 
@@ -539,18 +539,18 @@ class LoggerTest {
         Logger.setSender(sender)
         val message = "message"
         val throwable = Throwable()
-        val supplier = spyk(MessageSupplier { message })
+        val supplier = spyk( { message })
 
         Logger.setLogLevel(Logger.ASSERT)
         Logger.e(supplier, throwable)
 
-        verify(exactly = 0) {supplier.get()}
+        verify(exactly = 0) {supplier()}
         verify(exactly = 0) {sender.send(Logger.ERROR, message, throwable)}
 
         Logger.setLogLevel(Logger.VERBOSE)
         Logger.e(supplier, throwable)
 
-        verify(exactly = 1) {supplier.get()}
+        verify(exactly = 1) {supplier()}
         verify(exactly = 1) {sender.send(Logger.ERROR, message, throwable)}
     }
 }

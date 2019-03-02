@@ -17,7 +17,11 @@ import java.util.Locale;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import static net.mm2d.log.Logger.*;
+import static net.mm2d.log.Logger.DEBUG;
+import static net.mm2d.log.Logger.ERROR;
+import static net.mm2d.log.Logger.INFO;
+import static net.mm2d.log.Logger.VERBOSE;
+import static net.mm2d.log.Logger.WARN;
 
 /**
  * Provide sender factory method and control method.
@@ -61,7 +65,7 @@ public final class Senders {
         return new DefaultSender(new DefaultPrinter());
     }
 
-    private static class DefaultPrinter implements DefaultSender.Printer {
+    private static class DefaultPrinter implements Printer {
         private static final ThreadLocal<DateFormat> FORMAT = new ThreadLocal<DateFormat>() {
             @Override
             protected DateFormat initialValue() {

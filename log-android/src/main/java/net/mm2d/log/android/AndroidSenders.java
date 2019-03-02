@@ -10,6 +10,7 @@ package net.mm2d.log.android;
 import android.util.Log;
 
 import net.mm2d.log.DefaultSender;
+import net.mm2d.log.Printer;
 import net.mm2d.log.Sender;
 
 import javax.annotation.Nonnull;
@@ -56,7 +57,7 @@ public final class AndroidSenders {
         return new DefaultSender(new AndroidPrinter());
     }
 
-    private static class AndroidPrinter implements DefaultSender.Printer {
+    private static class AndroidPrinter implements Printer {
         @Override
         public void print(int level, @Nonnull String tag, @Nonnull String message) {
             final String[] lines = message.split("\n");

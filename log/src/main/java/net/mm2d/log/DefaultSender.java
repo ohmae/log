@@ -47,23 +47,6 @@ public class DefaultSender implements Sender {
         sAppendThread = append;
     }
 
-    /**
-     * Delegate the log output method.
-     */
-    public interface Printer {
-        /**
-         * Output log.
-         *
-         * @param level   Log level
-         * @param tag     TAG
-         * @param message Log message
-         */
-        void print(
-                final int level,
-                @Nonnull final String tag,
-                @Nonnull final String message);
-    }
-
     @Nonnull
     private final Printer mPrinter;
 

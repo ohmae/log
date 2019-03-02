@@ -17,7 +17,6 @@ import org.junit.Test
  * @author [大前良介 (OHMAE Ryosuke)](mailto:ryo@mm2d.net)
  */
 class LoggerTest {
-
     @Test
     fun setLogLevel() {
         val sender = spyk<Sender>()

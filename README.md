@@ -10,7 +10,7 @@ This is a simple log print utils, like [android.util.Log](https://developer.andr
 
 ## log
 
-The "log" module is written in pure java and can be used anywhere in Java projects.
+The "log" module is written in kotlin and can be used anywhere in Java / Kotlin projects.
 
 ## log-android
 
@@ -33,29 +33,29 @@ And needs to specify a Sender. Default does nothing.
 
 If you use the default implementation, write as follows.
 
-```java
-private static final boolean DEBUG = true;
-private static final boolean VERBOSE = true;
+```kotlin
+private val DEBUG = true;
+private val VERBOSE = true;
 ...
 if (DEBUG) {
-    Logger.setLogLevel(Logger.VERBOSE);
-    Logger.setSender(Senders.create());
-    Senders.appendCaller(VERBOSE);
-    Senders.appendThread(VERBOSE);
+    Logger.setLogLevel(Logger.VERBOSE)
+    Logger.setSender(Senders.create())
+    Senders.appendCaller(VERBOSE)
+    Senders.appendThread(VERBOSE)
 }
 ```
 
 #### for Android
 
 If you write it like this, you can output log to Logcat. (default is System.out)
-```java
-private static final boolean VERBOSE = true;
+```kotlin
+private val VERBOSE = true;
 ...
 if (BuildConfig.DEBUG) {
-    Logger.setLogLevel(Logger.VERBOSE);
-    Logger.setSender(AndroidSenders.create());
-    AndroidSenders.appendCaller(VERBOSE);
-    AndroidSenders.appendThread(VERBOSE);
+    Logger.setLogLevel(Logger.VERBOSE)
+    Logger.setSender(AndroidSenders.create())
+    AndroidSenders.appendCaller(VERBOSE)
+    AndroidSenders.appendThread(VERBOSE)
 }
 ```
 
@@ -64,10 +64,10 @@ if (BuildConfig.DEBUG) {
 Of course you can implement Sender any way.
 e.g. write to a file or send it to the network, etc.
 
-```java
-Logger.setSender((level, message, throwable) -> {
+```kotlin
+Logger.setSender {level, message, throwable -> 
     ...
-});
+};
 ```
 
 #### Log Level
@@ -78,27 +78,27 @@ ASSERT > ERROR > WARN > INFO > DEBUG > VERBOSE
 
 eg. If you set Log.ERROR
 
-```java
-Logger.setLogLevel(Log.ERROR);
+```kotlin
+Logger.setLogLevel(Log.ERROR)
 ```
 
 Only ASSERT or ERROR level logs are output.
 
 ### logging
 
-```java
-Logger.v("verbose");
-Logger.d("debug");
-Logger.i("info");
-Logger.w("warning");
-Logger.e("error");
+```kotlin
+Logger.v("verbose")
+Logger.d("debug")
+Logger.i("info")
+Logger.w("warning")
+Logger.e("error")
 ```
 
 #### Output
 
-```java
-Logger.setLogLevel(Logger.VERBOSE);
-Logger.setSender(Senders.create());
+```kotlin
+Logger.setLogLevel(Logger.VERBOSE)
+Logger.setSender(Senders.create())
 ```
 ```
 2018-02-24 05:02:05.510 V [MainWindow] verbose
@@ -108,11 +108,11 @@ Logger.setSender(Senders.create());
 2018-02-24 05:02:05.510 E [MainWindow] error
 ```
 
-```java
-Logger.setLogLevel(Logger.VERBOSE);
-Logger.setSender(Senders.create());
-Senders.appendCaller(VERBOSE);
-Senders.appendThread(VERBOSE);
+```kotlin
+Logger.setLogLevel(Logger.VERBOSE)
+Logger.setSender(Senders.create())
+Senders.appendCaller(true)
+Senders.appendThread(true)
 ```
 ```
 2018-02-24 05:02:46.541 V [MainWindow] [main,5,main] net.mm2d.upnp.sample.MainWindow.main(MainWindow.java:57) : verbose

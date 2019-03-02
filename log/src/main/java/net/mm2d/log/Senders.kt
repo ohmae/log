@@ -7,13 +7,6 @@
 
 package net.mm2d.log
 
-import net.mm2d.log.Logger.DEBUG
-import net.mm2d.log.Logger.ERROR
-import net.mm2d.log.Logger.INFO
-import net.mm2d.log.Logger.VERBOSE
-import net.mm2d.log.Logger.WARN
-import java.io.PrintWriter
-import java.io.StringWriter
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -60,85 +53,37 @@ object Senders {
      */
     @JvmStatic
     fun create(): Sender {
-        return DefaultSender(DefaultPrinter())
-    }
-
-    private class DefaultPrinter : Printer {
-
-        private val dateString: String
-            get() = FORMAT.get().format(Date(System.currentTimeMillis()))
-
-        override fun print(level: Int, tag: String, message: String) {
+        return DefaultSender.create { level, tag, message ->
             val prefix = "$dateString ${level.toLogLevelString()} [$tag] "
             message.split("\n").forEach {
                 println(prefix + it)
             }
         }
+    }
 
-        /**
-         * Utility method for Sender.
-         *
-         * @receiver Log level
-         * @return Log level string
-         */
-        private fun Int.toLogLevelString(): String {
-            return when (this) {
-                VERBOSE -> "V"
-                DEBUG -> "D"
-                INFO -> "I"
-                WARN -> "W"
-                ERROR -> "E"
-                else -> " "
-            }
-        }
-
-        companion object {
-            private val FORMAT = object : ThreadLocal<DateFormat>() {
-                override fun initialValue(): DateFormat {
-                    return SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.US)
-                }
-            }
+    private val FORMAT = object : ThreadLocal<DateFormat>() {
+        override fun initialValue(): DateFormat {
+            return SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.US)
         }
     }
-}
 
-/**
- * Utility method for Sender.
- *
- * @return Thread info string.
- */
-fun makeThreadInfo(): String {
-    val thread = Thread.currentThread()
-    return thread.threadGroup?.let { "[${thread.name},${thread.priority},${it.name}] " }
-        ?: "[${thread.name},${thread.priority}] "
-}
+    private val dateString: String
+        get() = FORMAT.get().format(Date(System.currentTimeMillis()))
 
-/**
- * Utility method for Sender.
- *
- * @param message Log message
- * @param tr      Throwable
- * @return message + stacktrace
- */
-fun makeMessage(message: String, tr: Throwable?): String {
-    if (message.isEmpty()) {
-        return tr?.let { makeStackTraceString(it) } ?: ""
+    /**
+     * Utility method for Sender.
+     *
+     * @receiver Log level
+     * @return Log level string
+     */
+    private fun Int.toLogLevelString(): String {
+        return when (this) {
+            Logger.VERBOSE -> "V"
+            Logger.DEBUG -> "D"
+            Logger.INFO -> "I"
+            Logger.WARN -> "W"
+            Logger.ERROR -> "E"
+            else -> " "
+        }
     }
-    return if (tr == null) {
-        message
-    } else "$message\n" + makeStackTraceString(tr)
-}
-
-/**
- * Utility method for Sender.
- *
- * @param tr throwable
- * @return Stacktrace string
- */
-fun makeStackTraceString(tr: Throwable): String {
-    val sw = StringWriter()
-    val pw = PrintWriter(sw)
-    tr.printStackTrace(pw)
-    pw.flush()
-    return sw.toString()
 }

@@ -80,14 +80,14 @@ object Logger {
         if (level < logLevel) {
             return
         }
-        logSender?.send(level, message, throwable)
+        logSender?.invoke(level, message, throwable)
     }
 
     private fun send(level: Int, supplier: () -> String, throwable: Throwable?) {
         if (level < logLevel) {
             return
         }
-        logSender?.send(level, supplier(), throwable)
+        logSender?.invoke(level, supplier(), throwable)
     }
 
     /**

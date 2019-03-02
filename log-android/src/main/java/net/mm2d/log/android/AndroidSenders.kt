@@ -8,9 +8,7 @@
 package net.mm2d.log.android
 
 import android.util.Log
-
 import net.mm2d.log.DefaultSender
-import net.mm2d.log.Printer
 import net.mm2d.log.Sender
 
 /**
@@ -51,12 +49,9 @@ object AndroidSenders {
      *
      * @return Sender
      */
+    @JvmStatic
     fun create(): Sender {
-        return DefaultSender(AndroidPrinter())
-    }
-
-    private class AndroidPrinter : Printer {
-        override fun print(level: Int, tag: String, message: String) {
+        return DefaultSender.create { level, tag, message ->
             message.split("\n").forEach {
                 Log.println(level, tag, it)
             }

@@ -13,7 +13,7 @@ import net.mm2d.log.DefaultSender;
 import net.mm2d.log.Printer;
 import net.mm2d.log.Sender;
 
-import javax.annotation.Nonnull;
+import androidx.annotation.NonNull;
 
 /**
  * Provide sender factory method and control method for Android.
@@ -59,7 +59,7 @@ public final class AndroidSenders {
 
     private static class AndroidPrinter implements Printer {
         @Override
-        public void print(int level, @Nonnull String tag, @Nonnull String message) {
+        public void print(int level, @NonNull String tag, @NonNull String message) {
             final String[] lines = message.split("\n");
             for (final String line : lines) {
                 Log.println(level, tag, line);

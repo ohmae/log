@@ -20,8 +20,6 @@ android {
         targetSdkVersion 28
         versionCode pj.versions.code
         versionName pj.versions.name
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

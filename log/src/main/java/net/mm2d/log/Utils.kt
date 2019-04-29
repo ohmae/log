@@ -55,7 +55,7 @@ fun makeMessage(message: String, tr: Throwable?): String {
  */
 fun makeStackTraceString(tr: Throwable): String {
     val sw = StringWriter()
-    val pw = PrintWriter(sw)
+    val pw = PrintWriter(sw, false)
     tr.printStackTrace(pw)
     pw.flush()
     return sw.toString()

@@ -76,19 +76,23 @@ object Logger {
         logLevel = level
     }
 
-    private fun send(level: Int, throwable: Throwable?, message: String, vararg args: Any?) {
+    private fun send(level: Int, throwable: Throwable?, message: String?, vararg args: Any?) {
         if (level < logLevel) {
             return
         }
-        val msg = if (args.isEmpty()) message else message.format(*args)
+        val msg: String = when {
+            message == null -> "null"
+            args.isEmpty() -> message
+            else -> message.format(*args)
+        }
         logSender?.invoke(level, msg, throwable)
     }
 
-    private fun send(level: Int, throwable: Throwable?, supplier: () -> String) {
+    private fun send(level: Int, throwable: Throwable?, supplier: () -> String?) {
         if (level < logLevel) {
             return
         }
-        logSender?.invoke(level, supplier(), throwable)
+        logSender?.invoke(level, supplier() ?: "null", throwable)
     }
 
     /**
@@ -97,7 +101,7 @@ object Logger {
      * @param message log message
      */
     @JvmStatic
-    fun v(message: String, vararg args: Any?) {
+    fun v(message: String?, vararg args: Any?) {
         send(VERBOSE, null, message, *args)
     }
 
@@ -107,7 +111,7 @@ object Logger {
      * @param supplier log message supplier
      */
     @JvmStatic
-    fun v(supplier: () -> String) {
+    fun v(supplier: () -> String?) {
         send(VERBOSE, null, supplier)
     }
 
@@ -128,7 +132,7 @@ object Logger {
      * @param message   log message
      */
     @JvmStatic
-    fun v(throwable: Throwable?, message: String, vararg args: Any?) {
+    fun v(throwable: Throwable?, message: String?, vararg args: Any?) {
         send(VERBOSE, throwable, message, *args)
     }
 
@@ -139,7 +143,7 @@ object Logger {
      * @param supplier  log message supplier
      */
     @JvmStatic
-    fun v(throwable: Throwable?, supplier: () -> String) {
+    fun v(throwable: Throwable?, supplier: () -> String?) {
         send(VERBOSE, throwable, supplier)
     }
 
@@ -149,7 +153,7 @@ object Logger {
      * @param message log message
      */
     @JvmStatic
-    fun d(message: String, vararg args: Any?) {
+    fun d(message: String?, vararg args: Any?) {
         send(DEBUG, null, message, *args)
     }
 
@@ -159,7 +163,7 @@ object Logger {
      * @param supplier log message supplier
      */
     @JvmStatic
-    fun d(supplier: () -> String) {
+    fun d(supplier: () -> String?) {
         send(DEBUG, null, supplier)
     }
 
@@ -180,7 +184,7 @@ object Logger {
      * @param message   log message
      */
     @JvmStatic
-    fun d(throwable: Throwable?, message: String, vararg args: Any?) {
+    fun d(throwable: Throwable?, message: String?, vararg args: Any?) {
         send(DEBUG, throwable, message, *args)
     }
 
@@ -191,7 +195,7 @@ object Logger {
      * @param supplier  log message supplier
      */
     @JvmStatic
-    fun d(throwable: Throwable?, supplier: () -> String) {
+    fun d(throwable: Throwable?, supplier: () -> String?) {
         send(DEBUG, throwable, supplier)
     }
 
@@ -201,7 +205,7 @@ object Logger {
      * @param message log message
      */
     @JvmStatic
-    fun i(message: String, vararg args: Any?) {
+    fun i(message: String?, vararg args: Any?) {
         send(INFO, null, message, *args)
     }
 
@@ -211,7 +215,7 @@ object Logger {
      * @param supplier log message supplier
      */
     @JvmStatic
-    fun i(supplier: () -> String) {
+    fun i(supplier: () -> String?) {
         send(INFO, null, supplier)
     }
 
@@ -232,7 +236,7 @@ object Logger {
      * @param message   log message
      */
     @JvmStatic
-    fun i(throwable: Throwable?, message: String, vararg args: Any?) {
+    fun i(throwable: Throwable?, message: String?, vararg args: Any?) {
         send(INFO, throwable, message, *args)
     }
 
@@ -243,7 +247,7 @@ object Logger {
      * @param supplier  log message supplier
      */
     @JvmStatic
-    fun i(throwable: Throwable?, supplier: () -> String) {
+    fun i(throwable: Throwable?, supplier: () -> String?) {
         send(INFO, throwable, supplier)
     }
 
@@ -253,7 +257,7 @@ object Logger {
      * @param message log message
      */
     @JvmStatic
-    fun w(message: String, vararg args: Any?) {
+    fun w(message: String?, vararg args: Any?) {
         send(WARN, null, message, *args)
     }
 
@@ -263,7 +267,7 @@ object Logger {
      * @param supplier log message supplier
      */
     @JvmStatic
-    fun w(supplier: () -> String) {
+    fun w(supplier: () -> String?) {
         send(WARN, null, supplier)
     }
 
@@ -284,7 +288,7 @@ object Logger {
      * @param message   log message
      */
     @JvmStatic
-    fun w(throwable: Throwable?, message: String, vararg args: Any?) {
+    fun w(throwable: Throwable?, message: String?, vararg args: Any?) {
         send(WARN, throwable, message, *args)
     }
 
@@ -295,7 +299,7 @@ object Logger {
      * @param supplier  log message supplier
      */
     @JvmStatic
-    fun w(throwable: Throwable?, supplier: () -> String) {
+    fun w(throwable: Throwable?, supplier: () -> String?) {
         send(WARN, throwable, supplier)
     }
 
@@ -305,7 +309,7 @@ object Logger {
      * @param message log message
      */
     @JvmStatic
-    fun e(message: String, vararg args: Any?) {
+    fun e(message: String?, vararg args: Any?) {
         send(ERROR, null, message, *args)
     }
 
@@ -315,7 +319,7 @@ object Logger {
      * @param supplier log message supplier
      */
     @JvmStatic
-    fun e(supplier: () -> String) {
+    fun e(supplier: () -> String?) {
         send(ERROR, null, supplier)
     }
 
@@ -336,7 +340,7 @@ object Logger {
      * @param throwable Throwable
      */
     @JvmStatic
-    fun e(throwable: Throwable?, message: String, vararg args: Any?) {
+    fun e(throwable: Throwable?, message: String?, vararg args: Any?) {
         send(ERROR, throwable, message, *args)
     }
 
@@ -347,7 +351,7 @@ object Logger {
      * @param throwable Throwable
      */
     @JvmStatic
-    fun e(throwable: Throwable?, supplier: () -> String) {
+    fun e(throwable: Throwable?, supplier: () -> String?) {
         send(ERROR, throwable, supplier)
     }
 
@@ -362,7 +366,7 @@ object Logger {
         replaceWith = ReplaceWith("Logger.v(Throwable, String)")
     )
     @JvmStatic
-    fun v(message: String, throwable: Throwable?) {
+    fun v(message: String?, throwable: Throwable?) {
         send(VERBOSE, throwable, message)
     }
 
@@ -377,7 +381,7 @@ object Logger {
         replaceWith = ReplaceWith("Logger.v(throwable, supplier)")
     )
     @JvmStatic
-    fun v(supplier: () -> String, throwable: Throwable?) {
+    fun v(supplier: () -> String?, throwable: Throwable?) {
         send(VERBOSE, throwable, supplier)
     }
 
@@ -392,7 +396,7 @@ object Logger {
         replaceWith = ReplaceWith("Logger.d(throwable, message)")
     )
     @JvmStatic
-    fun d(message: String, throwable: Throwable?) {
+    fun d(message: String?, throwable: Throwable?) {
         send(DEBUG, throwable, message)
     }
 
@@ -407,7 +411,7 @@ object Logger {
         replaceWith = ReplaceWith("Logger.d(throwable, supplier)")
     )
     @JvmStatic
-    fun d(supplier: () -> String, throwable: Throwable?) {
+    fun d(supplier: () -> String?, throwable: Throwable?) {
         send(DEBUG, throwable, supplier)
     }
 
@@ -422,7 +426,7 @@ object Logger {
         replaceWith = ReplaceWith("Logger.i(throwable, message)")
     )
     @JvmStatic
-    fun i(message: String, throwable: Throwable?) {
+    fun i(message: String?, throwable: Throwable?) {
         send(INFO, throwable, message)
     }
 
@@ -437,7 +441,7 @@ object Logger {
         replaceWith = ReplaceWith("Logger.i(throwable, supplier)")
     )
     @JvmStatic
-    fun i(supplier: () -> String, throwable: Throwable?) {
+    fun i(supplier: () -> String?, throwable: Throwable?) {
         send(INFO, throwable, supplier)
     }
 
@@ -452,7 +456,7 @@ object Logger {
         replaceWith = ReplaceWith("Logger.w(throwable, message)")
     )
     @JvmStatic
-    fun w(message: String, throwable: Throwable?) {
+    fun w(message: String?, throwable: Throwable?) {
         send(WARN, throwable, message)
     }
 
@@ -467,7 +471,7 @@ object Logger {
         replaceWith = ReplaceWith("Logger.w(throwable, supplier)")
     )
     @JvmStatic
-    fun w(supplier: () -> String, throwable: Throwable?) {
+    fun w(supplier: () -> String?, throwable: Throwable?) {
         send(WARN, throwable, supplier)
     }
 
@@ -482,7 +486,7 @@ object Logger {
         replaceWith = ReplaceWith("Logger.e(throwable, message)")
     )
     @JvmStatic
-    fun e(message: String, throwable: Throwable?) {
+    fun e(message: String?, throwable: Throwable?) {
         send(ERROR, throwable, message)
     }
 
@@ -497,7 +501,7 @@ object Logger {
         replaceWith = ReplaceWith("Logger.e(throwable, supplier)")
     )
     @JvmStatic
-    fun e(supplier: () -> String, throwable: Throwable?) {
+    fun e(supplier: () -> String?, throwable: Throwable?) {
         send(ERROR, throwable, supplier)
     }
 }

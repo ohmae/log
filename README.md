@@ -136,15 +136,15 @@ repositories {
 Add dependencies, as following.
 ```gradle
 dependencies {
-    implementation 'net.mm2d:log:0.8.0'
+    implementation 'net.mm2d:log:0.8.2'
 }
 ```
 
 If you want to use Android utils, as following.
 ```gradle
 dependencies {
-    implementation 'net.mm2d:log:0.8.0'
-    implementation 'net.mm2d:log-android:0.8.0'
+    implementation 'net.mm2d:log:0.8.2'
+    implementation 'net.mm2d:log-android:0.8.2'
 }
 ```
 

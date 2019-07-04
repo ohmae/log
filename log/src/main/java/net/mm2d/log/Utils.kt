@@ -21,33 +21,34 @@ typealias Sender = (level: Int, message: String, throwable: Throwable?) -> Unit
 typealias Printer = (level: Int, tag: String, message: String) -> Unit
 
 /**
+ * Make thread info string
+ *
  * Utility method for Sender.
  *
  * @return Thread info string.
  */
-fun makeThreadInfo(): String {
-    val thread = Thread.currentThread()
-    return thread.threadGroup?.let { "[${thread.name},${thread.priority},${it.name}] " }
-        ?: "[${thread.name},${thread.priority}] "
+fun makeThreadInfo(): String = Thread.currentThread().let { thread ->
+    "[${thread.name},${thread.priority}" + (thread.threadGroup?.let { ",${it.name}] " } ?: "] ")
 }
 
 /**
+ * Make message by join message and stack trace.
+ *
  * Utility method for Sender.
  *
  * @param message Log message
  * @param tr      Throwable
  * @return message + stacktrace
  */
-fun makeMessage(message: String, tr: Throwable?): String {
-    if (message.isEmpty()) {
-        return tr?.let { makeStackTraceString(it) } ?: ""
-    }
-    return if (tr == null) {
-        message
-    } else "$message\n" + makeStackTraceString(tr)
+fun makeMessage(message: String, tr: Throwable?): String = if (message.isEmpty()) {
+    tr?.let { makeStackTraceString(it) } ?: ""
+} else {
+    tr?.let { "$message\n" + makeStackTraceString(it) } ?: message
 }
 
 /**
+ * Make stack trace string from Throwable.
+ *
  * Utility method for Sender.
  *
  * @param tr throwable

@@ -126,7 +126,7 @@ Senders.appendThread(true)
 
 ## How to use
 
-You can download this library from jCenter.
+Download from jCenter.
 ```gradle
 repositories {
     jcenter()
@@ -140,7 +140,7 @@ dependencies {
 }
 ```
 
-If you want to use Android utils, as following.
+If use with Android utils, as following.
 ```gradle
 dependencies {
     implementation 'net.mm2d:log:0.8.2'

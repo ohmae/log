@@ -45,28 +45,24 @@ object DefaultSender {
     }
 
     @JvmStatic
-    fun create(printer: Printer): Sender {
-        return { level, message, throwable ->
-            val trace = Throwable().stackTrace
-            // $1 -> DefaultSender -> Logger#send -> Logger#v/d/i/w/e -> ログコール場所
-            val element = if (trace.size > 4) trace[4] else null
-            val tag = element?.makeTag() ?: "tag"
-            val messages = mutableListOf<String>()
-            if (sAppendThread) {
-                messages.add(makeThreadInfo())
-            }
-            if (sAppendCaller && element != null) {
-                messages.add("$element : ")
-            }
-            messages.add(makeMessage(message, throwable))
-            printer.invoke(level, tag, messages.joinToString(separator = ""))
+    fun create(printer: Printer): Sender = { level, message, throwable ->
+        val trace = Throwable().stackTrace
+        // $1 -> DefaultSender -> Logger#send -> Logger#v/d/i/w/e -> ログコール場所
+        val element = if (trace.size > 4) trace[4] else null
+        val tag = element?.makeTag() ?: "tag"
+        val messages = mutableListOf<String>()
+        if (sAppendThread) {
+            messages.add(makeThreadInfo())
         }
+        if (sAppendCaller && element != null) {
+            messages.add("$element : ")
+        }
+        messages.add(makeMessage(message, throwable))
+        printer.invoke(level, tag, messages.joinToString(separator = ""))
     }
 
-    private fun StackTraceElement.makeTag(): String {
-        return className
-            .substringAfterLast('.')
-            .substringBefore('$')
-            .let { if (it.length > MAX_TAG_LENGTH) it.substring(0, MAX_TAG_LENGTH) else it }
-    }
+    private fun StackTraceElement.makeTag(): String = className
+        .substringAfterLast('.')
+        .substringBefore('$')
+        .let { if (it.length > MAX_TAG_LENGTH) it.substring(0, MAX_TAG_LENGTH) else it }
 }

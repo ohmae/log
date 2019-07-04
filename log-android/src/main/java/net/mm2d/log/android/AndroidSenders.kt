@@ -50,11 +50,9 @@ object AndroidSenders {
      * @return Sender
      */
     @JvmStatic
-    fun create(): Sender {
-        return DefaultSender.create { level, tag, message ->
-            message.split("\n").forEach {
-                Log.println(level, tag, it)
-            }
+    fun create(): Sender = DefaultSender.create { level, tag, message ->
+        message.split("\n").forEach {
+            Log.println(level, tag, it)
         }
     }
 }

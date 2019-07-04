@@ -52,12 +52,10 @@ object Senders {
      * @return Sender
      */
     @JvmStatic
-    fun create(): Sender {
-        return DefaultSender.create { level, tag, message ->
-            val prefix = "$dateString ${level.toLogLevelString()} [$tag] "
-            message.split("\n").forEach {
-                println(prefix + it)
-            }
+    fun create(): Sender = DefaultSender.create { level, tag, message ->
+        val prefix = "$dateString ${level.toLogLevelString()} [$tag] "
+        message.split("\n").forEach {
+            println(prefix + it)
         }
     }
 
@@ -70,20 +68,12 @@ object Senders {
     private val dateString: String
         get() = FORMAT.get().format(Date(System.currentTimeMillis()))
 
-    /**
-     * Utility method for Sender.
-     *
-     * @receiver Log level
-     * @return Log level string
-     */
-    private fun Int.toLogLevelString(): String {
-        return when (this) {
-            Logger.VERBOSE -> "V"
-            Logger.DEBUG -> "D"
-            Logger.INFO -> "I"
-            Logger.WARN -> "W"
-            Logger.ERROR -> "E"
-            else -> " "
-        }
+    private fun Int.toLogLevelString(): String = when (this) {
+        Logger.VERBOSE -> "V"
+        Logger.DEBUG -> "D"
+        Logger.INFO -> "I"
+        Logger.WARN -> "W"
+        Logger.ERROR -> "E"
+        else -> " "
     }
 }

@@ -9,6 +9,7 @@ package net.mm2d.log
 
 import java.io.PrintWriter
 import java.io.StringWriter
+import java.util.*
 
 /**
  * Log sender interface.
@@ -37,27 +38,71 @@ fun makeThreadInfo(): String = Thread.currentThread().let { thread ->
  * Utility method for Sender.
  *
  * @param message Log message
- * @param tr      Throwable
+ * @param throwable Throwable
  * @return message + stacktrace
  */
-fun makeMessage(message: String, tr: Throwable?): String = if (message.isEmpty()) {
-    tr?.let { makeStackTraceString(it) } ?: ""
+fun makeMessage(message: String, throwable: Throwable?): String = if (message.isEmpty()) {
+    throwable?.toStackTraceString() ?: ""
 } else {
-    tr?.let { "$message\n" + makeStackTraceString(it) } ?: message
+    throwable?.let { "$message\n" + it.toStackTraceString() } ?: message
 }
 
 /**
- * Make stack trace string from Throwable.
+ * Throwable to stack trace string.
  *
  * Utility method for Sender.
  *
- * @param tr throwable
+ * @receiver throwable
  * @return Stacktrace string
  */
-fun makeStackTraceString(tr: Throwable): String {
+fun Throwable.toStackTraceString(): String {
     val sw = StringWriter()
     val pw = PrintWriter(sw, false)
-    tr.printStackTrace(pw)
+    printStackTrace(pw)
     pw.flush()
     return sw.toString()
+}
+
+private const val CAUSE_CAPTION = "Caused by: "
+
+/**
+ * Throwable to simple stack trace string.
+ *
+ * Utility method for Sender.
+ *
+ * @receiver throwable
+ * @return Stacktrace string
+ */
+fun Throwable.toSimpleStackTraceString(): String {
+    val dejaVu: MutableSet<Throwable> =
+        Collections.newSetFromMap(IdentityHashMap<Throwable, Boolean>())
+    dejaVu.add(this)
+    val sw = StringWriter()
+    val pw = PrintWriter(sw, false)
+    pw.println(this)
+    pw.printSimpleStackTrace(stackTrace)
+    pw.printEnclosedSimpleStackTrace(cause, CAUSE_CAPTION, dejaVu)
+    return sw.toString()
+}
+
+private fun PrintWriter.printSimpleStackTrace(stackTrace: Array<StackTraceElement>) {
+    if (stackTrace.isNotEmpty()) print("\tat ${stackTrace[0]}")
+    val remain = stackTrace.size - 1
+    if (remain > 0) println(" ... $remain more") else println()
+}
+
+private fun PrintWriter.printEnclosedSimpleStackTrace(
+    throwable: Throwable?,
+    caption: String,
+    dejaVu: MutableSet<Throwable>
+) {
+    throwable ?: return
+    if (dejaVu.contains(throwable)) {
+        println("\t[CIRCULAR REFERENCE:$throwable]")
+        return
+    }
+    dejaVu.add(throwable)
+    println(caption + throwable)
+    printSimpleStackTrace(throwable.stackTrace)
+    printEnclosedSimpleStackTrace(throwable.cause, CAUSE_CAPTION, dejaVu)
 }

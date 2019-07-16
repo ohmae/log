@@ -67,9 +67,17 @@ Of course you can implement Sender any way.
 e.g. write to a file or send it to the network, etc.
 
 ```kotlin
-Logger.setSender {level, message, throwable -> 
+Logger.setSender {level, message, throwable ->
     ...
-};
+}
+```
+
+If you want to use same format as the default, please try the following:
+
+```kotlin
+Logger.setSender(DefaultSender.create { level, tag, message ->
+    ...
+})
 ```
 
 #### Log Level
@@ -136,15 +144,15 @@ repositories {
 Add dependencies, as following.
 ```gradle
 dependencies {
-    implementation 'net.mm2d:log:0.8.2'
+    implementation 'net.mm2d:log:0.8.3'
 }
 ```
 
 If use with Android utils, as following.
 ```gradle
 dependencies {
-    implementation 'net.mm2d:log:0.8.2'
-    implementation 'net.mm2d:log-android:0.8.2'
+    implementation 'net.mm2d:log:0.8.3'
+    implementation 'net.mm2d:log-android:0.8.3'
 }
 ```
 

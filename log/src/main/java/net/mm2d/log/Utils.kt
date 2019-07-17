@@ -71,27 +71,37 @@ private const val CAUSE_CAPTION = "Caused by: "
  * Utility method for Sender.
  *
  * @receiver throwable
+ * @param classPrefix print target class prefix set
  * @return Stacktrace string
  */
-fun Throwable.toSimpleStackTraceString(): String {
+fun Throwable.toSimpleStackTraceString(classPrefix: Set<String> = emptySet()): String {
     val dejaVu: MutableSet<Throwable> =
         Collections.newSetFromMap(IdentityHashMap<Throwable, Boolean>())
     dejaVu.add(this)
     val sw = StringWriter()
     val pw = PrintWriter(sw, false)
     pw.println(this)
-    pw.printSimpleStackTrace(stackTrace)
-    pw.printEnclosedSimpleStackTrace(cause, CAUSE_CAPTION, dejaVu)
+    pw.printSimpleStackTrace(classPrefix, stackTrace)
+    pw.printEnclosedSimpleStackTrace(classPrefix, cause, CAUSE_CAPTION, dejaVu)
     return sw.toString()
 }
 
-private fun PrintWriter.printSimpleStackTrace(stackTrace: Array<StackTraceElement>) {
-    if (stackTrace.isNotEmpty()) print("\tat ${stackTrace[0]}")
-    val remain = stackTrace.size - 1
+private fun PrintWriter.printSimpleStackTrace(
+    classPrefix: Set<String>,
+    stackTrace: Array<StackTraceElement>
+) {
+    if (stackTrace.isEmpty()) return
+    val index = stackTrace.indexOfFirst { element ->
+        classPrefix.any { element.className.startsWith(it) }
+    }.coerceAtLeast(0)
+    if (index > 0) print("$index more ... ") else print("\t")
+    print("at ${stackTrace[index]}")
+    val remain = stackTrace.size - 1 - index
     if (remain > 0) println(" ... $remain more") else println()
 }
 
 private fun PrintWriter.printEnclosedSimpleStackTrace(
+    classPrefix: Set<String>,
     throwable: Throwable?,
     caption: String,
     dejaVu: MutableSet<Throwable>
@@ -103,6 +113,6 @@ private fun PrintWriter.printEnclosedSimpleStackTrace(
     }
     dejaVu.add(throwable)
     println(caption + throwable)
-    printSimpleStackTrace(throwable.stackTrace)
-    printEnclosedSimpleStackTrace(throwable.cause, CAUSE_CAPTION, dejaVu)
+    printSimpleStackTrace(classPrefix, throwable.stackTrace)
+    printEnclosedSimpleStackTrace(classPrefix, throwable.cause, CAUSE_CAPTION, dejaVu)
 }

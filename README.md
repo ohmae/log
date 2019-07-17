@@ -36,8 +36,8 @@ And needs to specify a Sender. Default does nothing.
 If you use the default implementation, write as follows.
 
 ```kotlin
-private val DEBUG = true;
-private val VERBOSE = true;
+private val DEBUG = true
+private val VERBOSE = true
 ...
 if (DEBUG) {
     Logger.setLogLevel(Logger.VERBOSE)
@@ -51,7 +51,7 @@ if (DEBUG) {
 
 If you write it like this, you can output log to Logcat. (default is System.out)
 ```kotlin
-private val VERBOSE = true;
+private val VERBOSE = true
 ...
 if (BuildConfig.DEBUG) {
     Logger.setLogLevel(Logger.VERBOSE)
@@ -144,15 +144,15 @@ repositories {
 Add dependencies, as following.
 ```gradle
 dependencies {
-    implementation 'net.mm2d:log:0.8.3'
+    implementation 'net.mm2d:log:0.8.4'
 }
 ```
 
 If use with Android utils, as following.
 ```gradle
 dependencies {
-    implementation 'net.mm2d:log:0.8.3'
-    implementation 'net.mm2d:log-android:0.8.3'
+    implementation 'net.mm2d:log:0.8.4'
+    implementation 'net.mm2d:log-android:0.8.4'
 }
 ```
 

@@ -156,6 +156,11 @@ dependencies {
 }
 ```
 
+## Dependent OSS
+
+- [Kotlin](https://kotlinlang.org/)
+  - org.jetbrains.kotlin:kotlin-stdlib-jdk7
+
 ## Author
 大前 良介 (OHMAE Ryosuke)
 http://www.mm2d.net/

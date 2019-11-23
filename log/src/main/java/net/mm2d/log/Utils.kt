@@ -79,10 +79,11 @@ fun Throwable.toSimpleStackTraceString(classPrefix: Set<String> = emptySet()): S
         Collections.newSetFromMap(IdentityHashMap<Throwable, Boolean>())
     dejaVu.add(this)
     val sw = StringWriter()
-    val pw = PrintWriter(sw, false)
-    pw.println(this)
-    pw.printSimpleStackTrace(classPrefix, stackTrace)
-    pw.printEnclosedSimpleStackTrace(classPrefix, cause, CAUSE_CAPTION, dejaVu)
+    PrintWriter(sw, false).let {
+        it.println(this)
+        it.printSimpleStackTrace(classPrefix, stackTrace)
+        it.printEnclosedSimpleStackTrace(classPrefix, cause, CAUSE_CAPTION, dejaVu)
+    }
     return sw.toString()
 }
 
@@ -91,8 +92,8 @@ private fun PrintWriter.printSimpleStackTrace(
     stackTrace: Array<StackTraceElement>
 ) {
     if (stackTrace.isEmpty()) return
-    val index = stackTrace.indexOfFirst { element ->
-        classPrefix.any { element.className.startsWith(it) }
+    val index = stackTrace.indexOfFirst {
+            element -> classPrefix.any { element.className.startsWith(it) }
     }.coerceAtLeast(0)
     if (index > 0) print("$index more ... ") else print("\t")
     print("at ${stackTrace[index]}")

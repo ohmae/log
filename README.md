@@ -144,22 +144,22 @@ repositories {
 Add dependencies, as following.
 ```gradle
 dependencies {
-    implementation 'net.mm2d:log:0.9.0'
+    implementation 'net.mm2d:log:0.9.1'
 }
 ```
 
 If use with Android utils, as following.
 ```gradle
 dependencies {
-    implementation 'net.mm2d:log:0.9.0'
-    implementation 'net.mm2d:log-android:0.9.0'
+    implementation 'net.mm2d:log:0.9.1'
+    implementation 'net.mm2d:log-android:0.9.1'
 }
 ```
 
 ## Dependent OSS
 
 - [Kotlin](https://kotlinlang.org/)
-  - org.jetbrains.kotlin:kotlin-stdlib-jdk7
+  - org.jetbrains.kotlin:kotlin-stdlib
 
 ## Author
 大前 良介 (OHMAE Ryosuke)

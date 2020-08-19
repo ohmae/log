@@ -47,7 +47,7 @@ dependencies {
 }
 
 tasks.named<DokkaTask>("dokkaHtml") {
-    outputDirectory = "../docs"
+    outputDirectory = "../docs/android"
 }
 
 tasks.create("sourcesJar", Jar::class) {

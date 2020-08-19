@@ -30,7 +30,7 @@ dependencies {
 }
 
 tasks.named<DokkaTask>("dokkaHtml") {
-    outputDirectory = "../docs"
+    outputDirectory = "../docs/log"
 }
 
 tasks.create("sourcesJar", Jar::class) {

@@ -60,6 +60,6 @@ artifacts {
 }
 
 uploadArchivesSettings()
-publishingSettings()
+publishingSettings("$buildDir/outputs/aar/${base.archivesBaseName}-release.aar")
 bintraySettings()
 dependencyUpdatesSettings()

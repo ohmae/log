@@ -28,11 +28,11 @@ private val NamedDomainObjectContainer<Configuration>.api: NamedDomainObjectProv
 private val NamedDomainObjectContainer<Configuration>.implementation: NamedDomainObjectProvider<Configuration>
     get() = named<Configuration>("implementation")
 
-fun Project.publishingSettings() {
+fun Project.publishingSettings(sourcePath: String) {
     publishing {
         publications {
             create<MavenPublication>("bintray") {
-                artifact("$buildDir/libs/${base.archivesBaseName}-${version}.jar")
+                artifact(sourcePath)
                 groupId = ProjectProperties.groupId
                 artifactId = base.archivesBaseName
                 version = ProjectProperties.versionName

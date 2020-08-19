@@ -44,7 +44,7 @@ artifacts {
 }
 
 uploadArchivesSettings()
-publishingSettings()
+publishingSettings("$buildDir/libs/${base.archivesBaseName}-${version}.jar")
 bintraySettings()
 jacocoSettings()
 dependencyUpdatesSettings()

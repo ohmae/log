@@ -11,12 +11,12 @@ This is a simple log print utils, like [android.util.Log](https://developer.andr
 ## log
 
 The "log" module is written in kotlin and can be used anywhere in Java / Kotlin projects.
-- API Document [dokka](https://ohmae.github.io/log/log/)
+- API Document [dokka](https://ohmae.github.io/log/log/log/)
 
 ## log-android
 
 The "log-android" module is a utility for using the "log" module on Android.
-- API Document [dokka](https://ohmae.github.io/android/log-android/)
+- API Document [dokka](https://ohmae.github.io/log/android/log-android/)
 
 ## Requirements
 

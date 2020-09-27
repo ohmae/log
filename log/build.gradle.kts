@@ -26,11 +26,11 @@ compileTestKotlin.kotlinOptions.jvmTarget = "1.8"
 dependencies {
     implementation(kotlin("stdlib"))
     testImplementation("junit:junit:4.13")
-    testImplementation("io.mockk:mockk:1.10.0")
+    testImplementation("io.mockk:mockk:1.10.2")
 }
 
 tasks.named<DokkaTask>("dokkaHtml") {
-    outputDirectory = "../docs/log"
+    outputDirectory.set(File(projectDir, "../docs/log"))
 }
 
 tasks.create("sourcesJar", Jar::class) {

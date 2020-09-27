@@ -17,11 +17,11 @@ group = ProjectProperties.groupId
 version = ProjectProperties.versionName
 
 android {
-    compileSdkVersion(29)
+    compileSdkVersion(30)
 
     defaultConfig {
         minSdkVersion(14)
-        targetSdkVersion(29)
+        targetSdkVersion(30)
         versionCode = ProjectProperties.versionCode
         versionName = ProjectProperties.versionName
     }
@@ -47,7 +47,7 @@ dependencies {
 }
 
 tasks.named<DokkaTask>("dokkaHtml") {
-    outputDirectory = "../docs/android"
+    outputDirectory.set(File(projectDir, "../docs/android"))
 }
 
 tasks.create("sourcesJar", Jar::class) {

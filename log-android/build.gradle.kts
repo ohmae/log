@@ -2,7 +2,7 @@ import build.*
 import org.jetbrains.dokka.gradle.DokkaTask
 
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("kotlin-android")
     id("kotlin-android-extensions")
     maven

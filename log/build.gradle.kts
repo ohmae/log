@@ -25,7 +25,7 @@ compileTestKotlin.kotlinOptions.jvmTarget = "1.8"
 
 dependencies {
     implementation(kotlin("stdlib"))
-    testImplementation("junit:junit:4.13")
+    testImplementation("junit:junit:4.13.1")
     testImplementation("io.mockk:mockk:1.10.2")
 }
 

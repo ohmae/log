@@ -43,7 +43,7 @@ android {
 dependencies {
     implementation(project(":log"))
     implementation(kotlin("stdlib"))
-    testImplementation("junit:junit:4.13")
+    testImplementation("junit:junit:4.13.1")
 }
 
 tasks.named<DokkaTask>("dokkaHtml") {

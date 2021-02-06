@@ -3,8 +3,7 @@
 [![GitHub release](https://img.shields.io/github/release/ohmae/Log.svg)](https://github.com/ohmae/Log/releases)
 [![GitHub issues](https://img.shields.io/github/issues/ohmae/Log.svg)](https://github.com/ohmae/Log/issues)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/ohmae/Log.svg)](https://github.com/ohmae/Log/issues?q=is%3Aissue+is%3Aclosed)
-[![Maven Repository](https://img.shields.io/badge/maven-jcenter-brightgreen.svg)](https://bintray.com/ohmae/maven/net.mm2d.log)
-[![Maven metadata URI](https://img.shields.io/maven-metadata/v/https/jcenter.bintray.com/net/mm2d/log/maven-metadata.xml.svg)](https://bintray.com/ohmae/maven/net.mm2d.log)
+![Maven Central](https://img.shields.io/maven-central/v/net.mm2d.log/log)
 
 This is a simple log print utils, like [android.util.Log](https://developer.android.com/reference/android/util/Log.html).
 
@@ -136,27 +135,40 @@ Senders.appendThread(true)
 
 ## How to use
 
-*jCenter will close in May. I am currently considering migrating to another hosting service. Please wait.*
+jCenter will close in May. In 0.9.4 moved to mavenCentral from jcenter.  
+Please note that the **groupID has changed**
 
-Download from jCenter.
-```gradle
-repositories {
-    jcenter()
-}
-```
+Download from mavenCentral. ![Maven Central](https://img.shields.io/maven-central/v/net.mm2d.log/log)
 
 Add dependencies, as following.
 ```gradle
 dependencies {
-    implementation 'net.mm2d:log:0.9.1'
+    implementation("net.mm2d:log:0.9.4")
 }
 ```
 
 If use with Android utils, as following.
 ```gradle
 dependencies {
-    implementation 'net.mm2d:log:0.9.1'
-    implementation 'net.mm2d:log-android:0.9.1'
+    implementation("net.mm2d.log:log:0.9.4")
+    implementation("net.mm2d.log:log-android:0.9.4")
+}
+```
+
+Versions below 0.9.4 were distributed with jCenter.
+However, jCenter will close and old versions are not migrated to mavenCentral.
+If you need an older version, please use the Github Pages repository.
+
+```gradle
+repositories {
+    maven { url = URI("https://ohmae.github.com/maven") }
+}
+```
+
+```gradle
+dependencies {
+    implementation("net.mm2d:log:0.9.3")
+    implementation("net.mm2d:log-android:0.9.3")
 }
 ```
 

@@ -7,9 +7,9 @@ plugins {
     id("kotlin")
     maven
     `maven-publish`
+    signing
     jacoco
     id("org.jetbrains.dokka")
-    id("com.jfrog.bintray")
     id("com.github.ben-manes.versions")
 }
 
@@ -26,11 +26,21 @@ compileTestKotlin.kotlinOptions.jvmTarget = "1.8"
 dependencies {
     implementation(kotlin("stdlib"))
     testImplementation("junit:junit:4.13.1")
-    testImplementation("io.mockk:mockk:1.10.2")
+    testImplementation("io.mockk:mockk:1.10.5")
 }
 
 tasks.named<DokkaTask>("dokkaHtml") {
     outputDirectory.set(File(projectDir, "../docs/log"))
+}
+
+tasks.named<DokkaTask>("dokkaJavadoc") {
+    outputDirectory.set(File(buildDir, "docs/javadoc"))
+}
+
+tasks.create("javadocJar", Jar::class) {
+    dependsOn("dokkaJavadoc")
+    archiveClassifier.set("javadoc")
+    from(File(buildDir, "docs/javadoc"))
 }
 
 tasks.create("sourcesJar", Jar::class) {
@@ -45,6 +55,5 @@ artifacts {
 
 uploadArchivesSettings()
 publishingSettings("$buildDir/libs/${base.archivesBaseName}-${version}.jar")
-bintraySettings()
 jacocoSettings()
 dependencyUpdatesSettings()

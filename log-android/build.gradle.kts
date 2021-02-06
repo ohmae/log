@@ -4,11 +4,10 @@ import org.jetbrains.dokka.gradle.DokkaTask
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-android-extensions")
     maven
     `maven-publish`
+    signing
     id("org.jetbrains.dokka")
-    id("com.jfrog.bintray")
     id("com.github.ben-manes.versions")
 }
 
@@ -50,6 +49,16 @@ tasks.named<DokkaTask>("dokkaHtml") {
     outputDirectory.set(File(projectDir, "../docs/android"))
 }
 
+tasks.named<DokkaTask>("dokkaJavadoc") {
+    outputDirectory.set(File(buildDir, "docs/javadoc"))
+}
+
+tasks.create("javadocJar", Jar::class) {
+    dependsOn("dokkaJavadoc")
+    archiveClassifier.set("javadoc")
+    from(File(buildDir, "docs/javadoc"))
+}
+
 tasks.create("sourcesJar", Jar::class) {
     archiveClassifier.set("sources")
     from(android.sourceSets["main"].java.srcDirs)
@@ -61,5 +70,4 @@ artifacts {
 
 uploadArchivesSettings()
 publishingSettings("$buildDir/outputs/aar/${base.archivesBaseName}-release.aar")
-bintraySettings()
 dependencyUpdatesSettings()

@@ -136,6 +136,8 @@ Senders.appendThread(true)
 
 ## How to use
 
+*jCenter will close in May. I am currently considering migrating to another hosting service. Please wait.*
+
 Download from jCenter.
 ```gradle
 repositories {

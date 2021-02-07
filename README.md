@@ -143,7 +143,7 @@ Download from mavenCentral. ![Maven Central](https://img.shields.io/maven-centra
 Add dependencies, as following.
 ```gradle
 dependencies {
-    implementation("net.mm2d:log:0.9.4")
+    implementation("net.mm2d.log:log:0.9.4")
 }
 ```
 

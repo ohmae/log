@@ -1,5 +1,9 @@
-$dokka.format:html
+$dokka.format:html-v1
 $dokka.linkExtension:html
-
+$dokka.location:net.mm2d.log.android////PointingToDeclaration/log-android/net.mm2d.log.android/index.html
+$dokka.location:net.mm2d.log.android/AndroidSenders///PointingToDeclaration/log-android/net.mm2d.log.android/-android-senders/index.html
+$dokka.location:net.mm2d.log.android/AndroidSenders/appendCaller/#kotlin.Boolean/PointingToDeclaration/log-android/net.mm2d.log.android/-android-senders/append-caller.html
+$dokka.location:net.mm2d.log.android/AndroidSenders/appendThread/#kotlin.Boolean/PointingToDeclaration/log-android/net.mm2d.log.android/-android-senders/append-thread.html
+$dokka.location:net.mm2d.log.android/AndroidSenders/create/#/PointingToDeclaration/log-android/net.mm2d.log.android/-android-senders/create.html
 net.mm2d.log.android
 

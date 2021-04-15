@@ -1,4 +1,0 @@
-var pages = [{'name': 'object AndroidSenders', 'index': '0', 'description':'net.mm2d.log.android.AndroidSenders', 'location':'log-android/net.mm2d.log.android/-android-senders/index.html', 'searchKey':'AndroidSenders'},
-{'name': 'fun appendCaller(append: Boolean)', 'index': '1', 'description':'net.mm2d.log.android.AndroidSenders.appendCaller', 'location':'log-android/net.mm2d.log.android/-android-senders/append-caller.html', 'searchKey':'appendCaller'},
-{'name': 'fun create(): (Int, String, Throwable??) -> Unit', 'index': '2', 'description':'net.mm2d.log.android.AndroidSenders.create', 'location':'log-android/net.mm2d.log.android/-android-senders/create.html', 'searchKey':'create'},
-{'name': 'fun appendThread(append: Boolean)', 'index': '3', 'description':'net.mm2d.log.android.AndroidSenders.appendThread', 'location':'log-android/net.mm2d.log.android/-android-senders/append-thread.html', 'searchKey':'appendThread'}]

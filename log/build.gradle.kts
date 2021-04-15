@@ -5,7 +5,6 @@ import org.jetbrains.dokka.gradle.DokkaTask
 plugins {
     `java-library`
     id("kotlin")
-    maven
     `maven-publish`
     signing
     jacoco
@@ -26,7 +25,7 @@ compileTestKotlin.kotlinOptions.jvmTarget = "1.8"
 dependencies {
     implementation(kotlin("stdlib"))
     testImplementation("junit:junit:4.13.2")
-    testImplementation("io.mockk:mockk:1.10.6")
+    testImplementation("io.mockk:mockk:1.11.0")
 }
 
 tasks.named<DokkaTask>("dokkaHtml") {
@@ -53,7 +52,6 @@ artifacts {
     archives(tasks.named<Jar>("sourcesJar"))
 }
 
-uploadArchivesSettings()
 publishingSettings("$buildDir/libs/${base.archivesBaseName}-${version}.jar")
 jacocoSettings()
 dependencyUpdatesSettings()

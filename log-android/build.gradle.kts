@@ -4,7 +4,6 @@ import org.jetbrains.dokka.gradle.DokkaTask
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    maven
     `maven-publish`
     signing
     id("org.jetbrains.dokka")
@@ -68,6 +67,5 @@ artifacts {
     archives(tasks.named<Jar>("sourcesJar"))
 }
 
-uploadArchivesSettings()
 publishingSettings("$buildDir/outputs/aar/${base.archivesBaseName}-release.aar")
 dependencyUpdatesSettings()

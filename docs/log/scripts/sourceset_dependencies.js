@@ -1,1 +1,1 @@
-sourceset_dependencies = '{":log/main": []}'
+sourceset_dependencies='{":log:dokkaHtml/main":[]}'

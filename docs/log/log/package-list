@@ -1,5 +1,51 @@
-$dokka.format:html
+$dokka.format:html-v1
 $dokka.linkExtension:html
-
+$dokka.location:net.mm2d.log////PointingToDeclaration/log/net.mm2d.log/index.html
+$dokka.location:net.mm2d.log//makeMessage/#kotlin.String#kotlin.Throwable?/PointingToDeclaration/log/net.mm2d.log/make-message.html
+$dokka.location:net.mm2d.log//makeThreadInfo/#/PointingToDeclaration/log/net.mm2d.log/make-thread-info.html
+$dokka.location:net.mm2d.log//toSimpleStackTraceString/kotlin.Throwable#kotlin.collections.Set[kotlin.String]/PointingToDeclaration/log/net.mm2d.log/to-simple-stack-trace-string.html
+$dokka.location:net.mm2d.log//toStackTraceString/kotlin.Throwable#/PointingToDeclaration/log/net.mm2d.log/to-stack-trace-string.html
+$dokka.location:net.mm2d.log/DefaultSender///PointingToDeclaration/log/net.mm2d.log/-default-sender/index.html
+$dokka.location:net.mm2d.log/DefaultSender/appendCaller/#kotlin.Boolean/PointingToDeclaration/log/net.mm2d.log/-default-sender/append-caller.html
+$dokka.location:net.mm2d.log/DefaultSender/appendThread/#kotlin.Boolean/PointingToDeclaration/log/net.mm2d.log/-default-sender/append-thread.html
+$dokka.location:net.mm2d.log/DefaultSender/create/#kotlin.Function3[kotlin.Int,kotlin.String,kotlin.String,kotlin.Unit]/PointingToDeclaration/log/net.mm2d.log/-default-sender/create.html
+$dokka.location:net.mm2d.log/Logger///PointingToDeclaration/log/net.mm2d.log/-logger/index.html
+$dokka.location:net.mm2d.log/Logger/ASSERT/#/PointingToDeclaration/log/net.mm2d.log/-logger/-a-s-s-e-r-t.html
+$dokka.location:net.mm2d.log/Logger/DEBUG/#/PointingToDeclaration/log/net.mm2d.log/-logger/-d-e-b-u-g.html
+$dokka.location:net.mm2d.log/Logger/ERROR/#/PointingToDeclaration/log/net.mm2d.log/-logger/-e-r-r-o-r.html
+$dokka.location:net.mm2d.log/Logger/INFO/#/PointingToDeclaration/log/net.mm2d.log/-logger/-i-n-f-o.html
+$dokka.location:net.mm2d.log/Logger/VERBOSE/#/PointingToDeclaration/log/net.mm2d.log/-logger/-v-e-r-b-o-s-e.html
+$dokka.location:net.mm2d.log/Logger/WARN/#/PointingToDeclaration/log/net.mm2d.log/-logger/-w-a-r-n.html
+$dokka.location:net.mm2d.log/Logger/d/#kotlin.Function0[kotlin.String?]/PointingToDeclaration/log/net.mm2d.log/-logger/d.html
+$dokka.location:net.mm2d.log/Logger/d/#kotlin.String?#kotlin.Array[kotlin.Any?]/PointingToDeclaration/log/net.mm2d.log/-logger/d.html
+$dokka.location:net.mm2d.log/Logger/d/#kotlin.Throwable?#kotlin.Function0[kotlin.String?]/PointingToDeclaration/log/net.mm2d.log/-logger/d.html
+$dokka.location:net.mm2d.log/Logger/d/#kotlin.Throwable?#kotlin.String?#kotlin.Array[kotlin.Any?]/PointingToDeclaration/log/net.mm2d.log/-logger/d.html
+$dokka.location:net.mm2d.log/Logger/d/#kotlin.Throwable?/PointingToDeclaration/log/net.mm2d.log/-logger/d.html
+$dokka.location:net.mm2d.log/Logger/e/#kotlin.Function0[kotlin.String?]/PointingToDeclaration/log/net.mm2d.log/-logger/e.html
+$dokka.location:net.mm2d.log/Logger/e/#kotlin.String?#kotlin.Array[kotlin.Any?]/PointingToDeclaration/log/net.mm2d.log/-logger/e.html
+$dokka.location:net.mm2d.log/Logger/e/#kotlin.Throwable?#kotlin.Function0[kotlin.String?]/PointingToDeclaration/log/net.mm2d.log/-logger/e.html
+$dokka.location:net.mm2d.log/Logger/e/#kotlin.Throwable?#kotlin.String?#kotlin.Array[kotlin.Any?]/PointingToDeclaration/log/net.mm2d.log/-logger/e.html
+$dokka.location:net.mm2d.log/Logger/e/#kotlin.Throwable?/PointingToDeclaration/log/net.mm2d.log/-logger/e.html
+$dokka.location:net.mm2d.log/Logger/i/#kotlin.Function0[kotlin.String?]/PointingToDeclaration/log/net.mm2d.log/-logger/i.html
+$dokka.location:net.mm2d.log/Logger/i/#kotlin.String?#kotlin.Array[kotlin.Any?]/PointingToDeclaration/log/net.mm2d.log/-logger/i.html
+$dokka.location:net.mm2d.log/Logger/i/#kotlin.Throwable?#kotlin.Function0[kotlin.String?]/PointingToDeclaration/log/net.mm2d.log/-logger/i.html
+$dokka.location:net.mm2d.log/Logger/i/#kotlin.Throwable?#kotlin.String?#kotlin.Array[kotlin.Any?]/PointingToDeclaration/log/net.mm2d.log/-logger/i.html
+$dokka.location:net.mm2d.log/Logger/i/#kotlin.Throwable?/PointingToDeclaration/log/net.mm2d.log/-logger/i.html
+$dokka.location:net.mm2d.log/Logger/setLogLevel/#kotlin.Int/PointingToDeclaration/log/net.mm2d.log/-logger/set-log-level.html
+$dokka.location:net.mm2d.log/Logger/setSender/#kotlin.Function3[kotlin.Int,kotlin.String,kotlin.Throwable?,kotlin.Unit]?/PointingToDeclaration/log/net.mm2d.log/-logger/set-sender.html
+$dokka.location:net.mm2d.log/Logger/v/#kotlin.Function0[kotlin.String?]/PointingToDeclaration/log/net.mm2d.log/-logger/v.html
+$dokka.location:net.mm2d.log/Logger/v/#kotlin.String?#kotlin.Array[kotlin.Any?]/PointingToDeclaration/log/net.mm2d.log/-logger/v.html
+$dokka.location:net.mm2d.log/Logger/v/#kotlin.Throwable?#kotlin.Function0[kotlin.String?]/PointingToDeclaration/log/net.mm2d.log/-logger/v.html
+$dokka.location:net.mm2d.log/Logger/v/#kotlin.Throwable?#kotlin.String?#kotlin.Array[kotlin.Any?]/PointingToDeclaration/log/net.mm2d.log/-logger/v.html
+$dokka.location:net.mm2d.log/Logger/v/#kotlin.Throwable?/PointingToDeclaration/log/net.mm2d.log/-logger/v.html
+$dokka.location:net.mm2d.log/Logger/w/#kotlin.Function0[kotlin.String?]/PointingToDeclaration/log/net.mm2d.log/-logger/w.html
+$dokka.location:net.mm2d.log/Logger/w/#kotlin.String?#kotlin.Array[kotlin.Any?]/PointingToDeclaration/log/net.mm2d.log/-logger/w.html
+$dokka.location:net.mm2d.log/Logger/w/#kotlin.Throwable?#kotlin.Function0[kotlin.String?]/PointingToDeclaration/log/net.mm2d.log/-logger/w.html
+$dokka.location:net.mm2d.log/Logger/w/#kotlin.Throwable?#kotlin.String?#kotlin.Array[kotlin.Any?]/PointingToDeclaration/log/net.mm2d.log/-logger/w.html
+$dokka.location:net.mm2d.log/Logger/w/#kotlin.Throwable?/PointingToDeclaration/log/net.mm2d.log/-logger/w.html
+$dokka.location:net.mm2d.log/Senders///PointingToDeclaration/log/net.mm2d.log/-senders/index.html
+$dokka.location:net.mm2d.log/Senders/appendCaller/#kotlin.Boolean/PointingToDeclaration/log/net.mm2d.log/-senders/append-caller.html
+$dokka.location:net.mm2d.log/Senders/appendThread/#kotlin.Boolean/PointingToDeclaration/log/net.mm2d.log/-senders/append-thread.html
+$dokka.location:net.mm2d.log/Senders/create/#/PointingToDeclaration/log/net.mm2d.log/-senders/create.html
 net.mm2d.log
 

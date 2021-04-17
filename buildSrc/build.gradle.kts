@@ -6,7 +6,6 @@ plugins {
 repositories {
     google()
     gradlePluginPortal()
-    jcenter()
 }
 
 dependencies {

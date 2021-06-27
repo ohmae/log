@@ -10,7 +10,7 @@ plugins {
     id("com.github.ben-manes.versions")
 }
 
-base.archivesBaseName = "log-android"
+base.archivesName.set("log-android")
 group = ProjectProperties.groupId
 version = ProjectProperties.versionName
 
@@ -67,5 +67,5 @@ artifacts {
     archives(tasks.named<Jar>("sourcesJar"))
 }
 
-publishingSettings("$buildDir/outputs/aar/${base.archivesBaseName}-release.aar")
+publishingSettings("$buildDir/outputs/aar/${base.archivesName.get()}-release.aar")
 dependencyUpdatesSettings()

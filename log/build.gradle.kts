@@ -12,7 +12,7 @@ plugins {
     id("com.github.ben-manes.versions")
 }
 
-base.archivesBaseName = "log"
+base.archivesName.set("log")
 group = ProjectProperties.groupId
 version = ProjectProperties.versionName
 
@@ -52,6 +52,6 @@ artifacts {
     archives(tasks.named<Jar>("sourcesJar"))
 }
 
-publishingSettings("$buildDir/libs/${base.archivesBaseName}-${version}.jar")
+publishingSettings("$buildDir/libs/${base.archivesName.get()}-${version}.jar")
 jacocoSettings()
 dependencyUpdatesSettings()

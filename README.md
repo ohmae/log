@@ -3,7 +3,7 @@
 [![GitHub release](https://img.shields.io/github/release/ohmae/Log.svg)](https://github.com/ohmae/Log/releases)
 [![GitHub issues](https://img.shields.io/github/issues/ohmae/Log.svg)](https://github.com/ohmae/Log/issues)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/ohmae/Log.svg)](https://github.com/ohmae/Log/issues?q=is%3Aissue+is%3Aclosed)
-![Maven Central](https://img.shields.io/maven-central/v/net.mm2d.log/log)
+[![Maven Central](https://img.shields.io/maven-central/v/net.mm2d.log/log)](https://search.maven.org/artifact/net.mm2d.log/log)
 
 This is a simple log print utils, like [android.util.Log](https://developer.android.com/reference/android/util/Log.html).
 

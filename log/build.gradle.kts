@@ -25,7 +25,7 @@ compileTestKotlin.kotlinOptions.jvmTarget = "1.8"
 dependencies {
     implementation(kotlin("stdlib"))
     testImplementation("junit:junit:4.13.2")
-    testImplementation("io.mockk:mockk:1.11.0")
+    testImplementation("io.mockk:mockk:1.12.0")
 }
 
 tasks.named<DokkaTask>("dokkaHtml") {
